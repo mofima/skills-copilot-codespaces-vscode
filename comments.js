@@ -1,18 +1,18 @@
 // create web server 
-const express = require('express');
-const app = express();
-const path = require('path');
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
+// 1. load http module
+var http = require('http');
 
-// create a router
-const router = express.Router();
+// 2. create http server
+http.createServer(function (req, res) {
+  // 3. set response header
+  res.writeHead(200, {'Content-Type': 'text/plain'});
 
-// create a port
-const port = 3000;
+  // 4. set response content    
+  res.end('Hello World\n');
 
-// create a list of comments
-const comments = [
-    {
-        id: 1,
-    } ]   
+}).listen(8080);
+
+console.log('Server running on port 8080.');
+
+// 5. open browser and type http://localhost:8080/ in address bar
+// 6. you will see 'Hello World' on browser
